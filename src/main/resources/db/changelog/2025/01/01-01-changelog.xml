@@ -41,10 +41,6 @@
             <column name="customer_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
-            <column name="price_total" type="DECIMAL(10, 2)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="observation" type="TEXT"/>
             <column name="version" type="INT">
                 <constraints nullable="false"/>
             </column>
@@ -91,6 +87,49 @@
                 referencedTableName="sales"
                 referencedColumnNames="id"
                 onDelete="CASCADE"/>
+    </changeSet>
+
+    <changeSet id="5" author="luiz">
+        <createTable tableName="users">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_name" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone_number" type="VARCHAR(50)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="cpf" type="VARCHAR(50)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column defaultValueBoolean="true" name="active" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="timestamp"/>
+            <column name="deleted_at" type="timestamp"/>
+        </createTable>
+
+        <addDefaultValue
+                tableName="users"
+                columnName="id"
+                defaultValueComputed="gen_random_uuid()"
+                columnDataType="UUID"/>
     </changeSet>
 
 </databaseChangeLog>

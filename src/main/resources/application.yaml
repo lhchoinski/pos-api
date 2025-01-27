@@ -34,12 +34,16 @@ spring:
       ddl-auto: none
 
   rabbitmq:
-    host: ${API_POS_RABBITMQ_HOST}
-    port: ${API_POS_RABBITMQ_PORT}
-    username: ${API_POS_RABBITMQ_USERNAME}
-    password: ${API_POS_RABBITMQ_PASSWORD}
-
-broker:
-  queue:
-    email:
-      name: default.email
+    host: ${API_POS_RABBITMQ_HOST:localhost}
+    port: ${API_POS_RABBITMQ_PORT:5672}
+    username: ${API_POS_RABBITMQ_USERNAME:guest}
+    password: ${API_POS_RABBITMQ_PASSWORD:guest}
+    dynamic: true
+    auto-create: true
+    listener:
+      simple:
+        auto-startup: true
+  broker:
+    queue:
+      email:
+        name: default.email

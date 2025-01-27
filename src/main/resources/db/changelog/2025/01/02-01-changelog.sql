@@ -1,6 +1,11 @@
 -- liquibase formatted sql
 
---changeset Luiz:20250119-02-01
+--changeset Luiz:20250124-02-01
+INSERT INTO users (name, user_name, email, password, phone_number, cpf, active, version, created_at)
+VALUES ('ADMIN', 'admin', 'admin@exemplo.com',
+        '$2a$10$lSrI2h./WOgFdyM7vkO9..gq50bfPluo0HyAHA7ySVldjaYCERMpu', '00000000000', '00000000000',true, 0, now());
+
+--changeset Luiz:20250119-02-02
 INSERT INTO customers (name, address, phone, email, active, version, created_at)
 VALUES ('JOHN DOE', '1234 Elm Street', '5550100', 'john.doe@example.com', false, 0, now()),
        ('JANE SMITH', '5678 Oak Avenue', '5550101', 'jane.smith@example.com', true, 0, now()),
