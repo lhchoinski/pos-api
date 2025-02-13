@@ -1,6 +1,8 @@
 package com.system.pos.services;
 
+import com.system.pos.dtos.SaleDTO;
+
 public interface PosService {
 
-    String processSale(String saleData);
+    String initSale(SaleDTO saleDTO);
 }
